@@ -1,6 +1,7 @@
 package Curd_Methods;
 
 import org.json.simple.JSONObject;
+import static org.hamcrest.Matchers.equalTo;
 import org.testng.annotations.Test;
 import static io.restassured.RestAssured.*;
 import io.restassured.http.ContentType;
@@ -25,7 +26,7 @@ public class PostMethod {
 		.post("http://localhost:8080/university")
 		
 		.then()
-		.assertThat().statusCode(200)
+		.assertThat().statusCode(200).body("data.email",equalTo("sagar@gmail.com"))
 		.log().all();
 	}
 }
